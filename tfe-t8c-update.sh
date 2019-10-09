@@ -1,12 +1,17 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+  echo "Usage: Must contain an instance size to continue"
+  exit 
+fi
+
 # Define the org and workspace to create the TFE URL to query the variable
 tfe_workspace_name="tfe-turbonomic-demo"
 tfe_org="Turbonomic"
 tfe_url="https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$tfe_org&filter%5Bworkspace%5D%5Bname%5D=$tfe_workspace_name"
 
 # set the local variable for the instance size
-var_turbo_instance_size="t2.nano"
+var_turbo_instance_size=$(echo $1)
 
 # Find the variable ID to set in TFE 
 tfe_var_instance_size=$(curl -s \
