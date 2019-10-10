@@ -9,3 +9,5 @@
 **/turbo-trigger.sh
 *.json
 sample.sh
+turbo-go.sh
+

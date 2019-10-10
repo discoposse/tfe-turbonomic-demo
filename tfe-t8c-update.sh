@@ -1,19 +1,18 @@
 #!/bin/bash
 
 #if [ -z "$1" ] || [ -z "$2" ]|| [ -z "$3" ]; then
-#if [ -z "$1" ]; then
-#  echo "Usage: $0 <organization> <workspace> <instance size>"
-#  exit 0
-#fi
+if [ -z "$1" ]; then
+  echo "Usage: $0 <organization> <workspace> <instance size>"
+  exit 0
+fi
 
 # Define the org and workspace to create the TFE URL to query the variable
-tfe_org="Turbonomic"
-tfe_workspace_name="tfe-turbonomic-demo"
+tfe_org=$(echo $1)
+tfe_workspace_name=$(echo $2)
 tfe_url="https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$tfe_org&filter%5Bworkspace%5D%5Bname%5D=$tfe_workspace_name"
 
 # set the local variable for the instance size
-# var_turbo_instance_size=$(echo $1)
-var_turbo_instance_size="t2.medium"
+var_turbo_instance_size=$(echo $3)
 
 # Find the variable ID to set in TFE 
 tfe_var_instance_size=$(curl -s \
