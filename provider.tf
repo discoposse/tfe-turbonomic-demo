@@ -6,10 +6,10 @@ provider "aws" {
 
 terraform {
   	backend "remote" {
-    	organization = "RapidMatter"
+    	organization = "Turbonomic"
 
     workspaces {
-      	name = "terraform-cloud-aws-summit-toronto"
+      	name = "tfe-turbonomic-demo"
     }
   }
 }

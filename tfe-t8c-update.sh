@@ -30,4 +30,4 @@ curl -s \
   --header "Content-Type: application/vnd.api+json" \
   --request PATCH \
   --data "$var_json_data" \
-  https://app.terraform.io/api/v2/vars/var-f8LB1cPTgU76dSYo | jq
+  https://app.terraform.io/api/v2/vars/$tfe_var_instance_size | jq
