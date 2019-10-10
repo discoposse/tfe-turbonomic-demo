@@ -10,4 +10,4 @@
 *.json
 sample.sh
 turbo-go.sh
-
+*.zip
