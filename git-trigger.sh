@@ -1,16 +1,17 @@
 #!/bin/bash
 
+# Set the Github URL for our trigger file
+github_trigger_url=https://api.github.com/repos/discoposse/tfe-turbonomic-demo/contents/trigger
+
 # Generate a timestamp to be used in the trigger file
 trigger_content=$(echo date | base64)
 trigger_date=$(date +'%a%b%d-%H%M')
-
-# create the payload 
 
 # Get the current trigger file SHA from Github
 trigger_sha=$(curl -s \
   --header "Authorization: token $GH_TOKEN" \
   --request GET \
-  https://api.github.com/repos/discoposse/tfe-turbonomic-demo/contents/trigger \
+   $github_trigger_url \
   | jq '.sha' | sed -e 's/^"//' -e 's/"$//')
 
 # Create the JSON data payload
@@ -21,6 +22,6 @@ curl -s \
   --header "Authorization: token $GH_TOKEN" \
   --request PUT \
   --data "$git_json_data" \
-  https://api.github.com/repos/discoposse/tfe-turbonomic-demo/contents/trigger
+  $github_trigger_url
 
 
