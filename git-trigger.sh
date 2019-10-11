@@ -15,7 +15,7 @@ trigger_sha=$(curl -s \
   | jq '.sha' | sed -e 's/^"//' -e 's/"$//')
 
 # Create the JSON data payload
-git_json_data={\""message\"":\""Updated by Turbonomic $trigger_date\"",\""committer\"":{\""name\"":\""Turbonomic Labs\"",\""email\"":\""eric@discoposse.com\""},\""content\"":\""ZGF0ZQo=\"",\""sha\"":\""$trigger_sha\""}
+git_json_data={\""message\"":\""Updated by Turbonomic $trigger_date\"",\""committer\"":{\""name\"":\""Turbonomic Labs\"",\""email\"":\""eric@discoposse.com\""},\""content\"":\""$trigger_content\"",\""sha\"":\""$trigger_sha\""}
 
 # Update the trigger file to force a VCS webhook
 curl -s \
