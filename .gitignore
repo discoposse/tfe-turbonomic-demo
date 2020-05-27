@@ -9,5 +9,6 @@
 **/turbo-trigger.sh
 *.json
 sample.sh
+webinar.sh
 turbo-go.sh
 *.zip
